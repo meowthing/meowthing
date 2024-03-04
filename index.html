@@ -56,11 +56,17 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
     // run the engine
     Runner.run(runner, engine);
 
-    ondeviceorientation = (event) => {
-        var stats = `y:${event.gamma}, x:${event.beta}`
+    // ondeviceorientation = (event) => {
+    //     var stats = `y:${event.gamma}, x:${event.beta}`
+    //     document.getElementById('debug').innerText = stats;
+    //     console.log(stats)
+    // };
+
+    ondevicemotion = (event) => {
+        var stats = `y:${event.accelerationIncludingGravity.y}, x:${event.accelerationIncludingGravity.x}`
         document.getElementById('debug').innerText = stats;
-        console.log(stats)
-    };
+        console.log(stats);
+    }
 </script>
 
 </html>
