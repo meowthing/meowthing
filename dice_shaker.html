@@ -1,0 +1,67 @@
+<html>
+<script src="
+https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
+"></script>
+
+<head>
+    <title>DICE</title>
+</head>
+
+<body>
+    <div id="dice"></div>
+    <div id="debug"></div>
+</body>
+
+<script>
+    // module aliases
+    var Engine = Matter.Engine,
+        Render = Matter.Render,
+        Runner = Matter.Runner,
+        Bodies = Matter.Bodies,
+        Composite = Matter.Composite;
+
+    // create an engine
+    var engine = Engine.create();
+
+    // create a renderer
+    var render = Render.create({
+        element: document.getElementById('dice'),
+        engine: engine,
+        options: {
+            wireframes: false,
+            width: 400,
+            height: 600,
+            showAngleIndicator: true,
+        }
+    });
+
+    // create two boxes and a ground
+    var boxA = Bodies.rectangle(200, 200, 80, 80);
+    var boxB = Bodies.rectangle(250, 50, 80, 80);
+    var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+    var ceiling = Bodies.rectangle(400, 0, 810, 60, { isStatic: true });
+    var wallL = Bodies.rectangle(0, 60, 60, 1200, { isStatic: true });
+    var wallR = Bodies.rectangle(400, 60, 60, 1200, { isStatic: true });
+
+    // add all of the bodies to the world
+    Composite.add(engine.world, [boxA, boxB, ground, wallL, wallR, ceiling]);
+
+    // run the renderer
+    Render.run(render);
+
+    // create runner
+    var runner = Runner.create();
+
+    // run the engine
+    Runner.run(runner, engine);
+
+    addEventListener("deviceorientation", (event) => { });
+
+    ondeviceorientation = (event) => {
+        var stats = `y:${event.gamma}, x:${event.beta}`
+        document.getElementById('debug').innerText = stats;
+        console.log(stats)
+    };
+</script>
+
+</html>
