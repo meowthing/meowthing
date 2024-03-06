@@ -55,41 +55,21 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
 
     // run the engine
     Runner.run(runner, engine);
-
-    // ondeviceorientation = (event) => {
-    //     var stats = `y:${event.gamma}, x:${event.beta}`
-    //     document.getElementById('debug').innerText = stats;
-    //     console.log(stats)
-    // };
-
-    // ondevicemotion = (event) => {
-    //     var stats = `y:${event.accelerationIncludingGravity.y}, x:${event.accelerationIncludingGravity.x}`
-    //     document.getElementById('debug').innerText = stats;
-    //     console.log(stats);
-    // }
-
-   
-    handleMotionEvent = function (event) {
-        result = event.acceleration.x;
-        console.log(result);
-        // do something with result.  Result datapoints will be, eg: 3.200000004, 3.4000000....
+    
+    ondevicemotion = (event) => {
+        var stats = `y:${event.accelerationIncludingGravity.y}, x:${event.accelerationIncludingGravity.x}`
+        document.getElementById('debug').innerText = stats;
+        console.log(stats);
     }
 
-    window.addEventListener("devicemotion", handleMotionEvent, true);
+    // let gyroscope = new Gyroscope({ frequency: 60 });
 
-    let gyroscope = new Gyroscope({ frequency: 60 });
-
-    gyroscope.addEventListener("reading", (e) => {
-        console.log(`Angular velocity along the X-axis ${gyroscope.x}`);
-        console.log(`Angular velocity along the Y-axis ${gyroscope.y}`);
-        console.log(`Angular velocity along the Z-axis ${gyroscope.z}`);
-    });
-    gyroscope.start();
-
-    var gyrostate = navigator.permissions.query({ name: "gyroscope" }).then((result) => result);
-    var accelstate = navigator.permissions.query({ name: "accelerometer" }).then((result) => result);
-    console.log(`Gyro permission: ${gyrostate}`)
-    console.log(`Accel permission: ${accelstate}`)
+    // gyroscope.addEventListener("reading", (e) => {
+    //     console.log(`Angular velocity along the X-axis ${gyroscope.x}`);
+    //     console.log(`Angular velocity along the Y-axis ${gyroscope.y}`);
+    //     console.log(`Angular velocity along the Z-axis ${gyroscope.z}`);
+    // });
+    // gyroscope.start();
 </script>
 
 </html>
