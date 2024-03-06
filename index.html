@@ -67,6 +67,9 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
         document.getElementById('debug').innerText = stats;
         console.log(stats);
     }
+
+    console.log(`Gyro permission: ${Navigator.permissions.query({ name: "gyroscope" })}`)
+    console.log(`Accel permission: ${Navigator.permissions.query({ name: "accelerometer" })}`)
 </script>
 
 </html>
