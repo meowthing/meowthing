@@ -77,8 +77,8 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
     });
     gyroscope.start();
 
-    var gyrostate = await navigator.permissions.query({ name: "gyroscope" });
-    var accelstate = await navigator.permissions.query({ name: "accelerometer" });
+    var gyrostate = navigator.permissions.query({ name: "gyroscope" }).then((result) => result);
+    var accelstate = navigator.permissions.query({ name: "accelerometer" }).then((result) => result);
     console.log(`Gyro permission: ${gyrostate}`)
     console.log(`Accel permission: ${accelstate}`)
 </script>
