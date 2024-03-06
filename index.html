@@ -68,6 +68,15 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
         console.log(stats);
     }
 
+    let gyroscope = new Gyroscope({ frequency: 60 });
+
+    gyroscope.addEventListener("reading", (e) => {
+        console.log(`Angular velocity along the X-axis ${gyroscope.x}`);
+        console.log(`Angular velocity along the Y-axis ${gyroscope.y}`);
+        console.log(`Angular velocity along the Z-axis ${gyroscope.z}`);
+    });
+    gyroscope.start();
+
     console.log(`Gyro permission: ${await navigator.permissions.query({ name: "gyroscope" })}`)
     console.log(`Accel permission: ${await navigator.permissions.query({ name: "accelerometer" })}`)
 </script>
