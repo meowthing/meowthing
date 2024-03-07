@@ -8,7 +8,7 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
 </head>
 
 <body>
-    <div>Dafuq</div>
+    <div><button id="btnForce" onclick="applyforce()">Apply force</button></div>
     <div id="dice"></div>
     <div id="debug"></div>
 </body>
@@ -63,10 +63,16 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
         console.log(`Angular velocity along the Y-axis ${accelerometer.y}`);
         console.log(`Angular velocity along the Z-axis ${accelerometer.z}`);
 
-        Body.applyForce(boxA, {x: boxA.position.x, y: boxA.position.y}, {x: accelerometer.x, y: accelerometer.y});
+        document.getElementById('debug').innerText(`x:${accelerometer.x}, y:${accelerometer.y}, z:${accelerometer.z}`);
+
+        Body.applyForce(boxA, { x: boxA.position.x, y: boxA.position.y }, { x: accelerometer.x, y: accelerometer.y });
     });
 
     accelerometer.start();
+
+    function applyforce() {
+        Body.applyForce(boxA, { x: boxA.position.x, y: boxA.position.y }, { x: accelerometer.x, y: accelerometer.y });
+    }
 </script>
 
 </html>
