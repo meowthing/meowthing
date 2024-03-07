@@ -56,27 +56,14 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
     // run the engine
     Runner.run(runner, engine);
 
-    ondevicemotion = (event) => {
-        var stats = `y:${event.accelerationIncludingGravity.y}, x:${event.accelerationIncludingGravity.x}`
-        document.getElementById('debug').innerText = stats;
-        console.log(stats);
-    }
-
-    // let gyroscope = new Gyroscope({ frequency: 60 });
-
-    // gyroscope.addEventListener("reading", (e) => {
-    //     console.log(`Angular velocity along the X-axis ${gyroscope.x}`);
-    //     console.log(`Angular velocity along the Y-axis ${gyroscope.y}`);
-    //     console.log(`Angular velocity along the Z-axis ${gyroscope.z}`);
-    // });
-    // gyroscope.start();
-
     let accelerometer = new Accelerometer({ frequency: 60 });
 
     accelerometer.addEventListener("reading", (e) => {
         console.log(`Angular velocity along the X-axis ${accelerometer.x}`);
         console.log(`Angular velocity along the Y-axis ${accelerometer.y}`);
         console.log(`Angular velocity along the Z-axis ${accelerometer.z}`);
+
+        Body.applyForce(boxA, {x: boxA.position.x, y: boxA.position.y}, {x: accelerometer.x, y: accelerometer.y});
     });
 
     accelerometer.start();
