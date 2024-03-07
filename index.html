@@ -58,7 +58,7 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
     // run the engine
     Runner.run(runner, engine);
 
-    let accelerometer = new Accelerometer({ frequency: 60 });
+    let accelerometer = new Accelerometer({ frequency: 1 });
 
     accelerometer.addEventListener("reading", (e) => {
         // console.log(`Angular velocity along the X-axis ${accelerometer.x}`);
