@@ -59,11 +59,12 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
     let accelerometer = new Accelerometer({ frequency: 60 });
 
     accelerometer.addEventListener("reading", (e) => {
-        console.log(`Angular velocity along the X-axis ${accelerometer.x}`);
-        console.log(`Angular velocity along the Y-axis ${accelerometer.y}`);
-        console.log(`Angular velocity along the Z-axis ${accelerometer.z}`);
+        // console.log(`Angular velocity along the X-axis ${accelerometer.x}`);
+        // console.log(`Angular velocity along the Y-axis ${accelerometer.y}`);
+        // console.log(`Angular velocity along the Z-axis ${accelerometer.z}`);
 
-        document.getElementById('debug').innerText(`x:${accelerometer.x}, y:${accelerometer.y}, z:${accelerometer.z}`);
+        console.log(`x:${accelerometer.x}, y:${accelerometer.y}, z:${accelerometer.z}`)
+        document.getElementById('debug').innerText = `x:${accelerometer.x}, y:${accelerometer.y}, z:${accelerometer.z}`;
 
         Body.applyForce(boxA, { x: boxA.position.x, y: boxA.position.y }, { x: accelerometer.x, y: accelerometer.y });
     });
