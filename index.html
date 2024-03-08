@@ -92,7 +92,7 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
                 .then(permissionState => {
                     if (permissionState === "granted") {
                         window.addEventListener("deviceorientation", (event) => {
-                            document.getElementById('debug').innerText = `x:${event.beta}, y:${event.gamma}, z:${event.alpha}`;
+                            document.getElementById('debug').innerHTML = `x:${event.beta}, \n y:${event.gamma}, \n z:${event.alpha}`;
 
                             gravity = engine.gravity;
 
