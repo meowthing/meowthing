@@ -69,7 +69,7 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
     // run the engine
     Runner.run(runner, engine);
 
-    let accelerometer = new Accelerometer({ frequency: 1 });
+    let accelerometer = new Accelerometer({ frequency: 60 });
 
     accelerometer.addEventListener("reading", (e) => {
         console.log(`x:${accelerometer.x}, y:${accelerometer.y}, z:${accelerometer.z}`)
@@ -77,35 +77,11 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
 
         gravity = engine.gravity;
 
-        console.log(`grav: ${gravity}`);
-
-        gravity.x = Common.clamp(accelerometer.x, -90, 90);// / 90;
-        gravity.y = Common.clamp(accelerometer.y, -90, 90);// / 90;
-
-        console.log(`grav2: ${gravity}`);
-
-        //Body.applyForce(boxA, { x: boxA.position.x, y: boxA.position.y }, { x: lpfilter(accelerometer.x), y: lpfilter(accelerometer.y) });
+        gravity.x = Common.clamp(accelerometer.x, -90, 90) / 90;
+        gravity.y = Common.clamp(accelerometer.y, -90, 90) / 90;
     });
 
-    accelerometer.start();    
-
-    // if (window.DeviceOrientationEvent) {
-    //     let GRAVITY = 2;
-    //     var devOrientHandler = function (event) {
-    //         var pitch = Math.PI * event.beta / 180;
-    //         var roll = Math.PI * event.gamma / 180;
-
-    //         var acc = {
-    //             x: Math.cos(pitch) * Math.sin(roll) * GRAVITY,
-    //             y: Math.sin(pitch) * GRAVITY
-    //         };
-
-    //         engine.world.one('step', function () {
-    //             acceleration.setAcceleration(acc);
-    //         });
-    //     }
-    //     window.addEventListener('devicemotion', devOrientHandler, false);
-    // }
+    accelerometer.start();
 </script>
 
 </html>
