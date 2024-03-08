@@ -8,7 +8,7 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
 </head>
 
 <body>
-    <div>v2.0</div>
+    <div>v2.1</div>
     <div><button id="btnSensor" onclick="requestSensorPermission();">Enable gyro (for Safari)</button></div>
     <div id="dice"></div>
     <div id="debug"></div>
@@ -97,8 +97,8 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
                             gravity = engine.gravity;
 
 
-                            gravity.x = Math.max(-90, Math.min(event.gamma, 90)) / 30;
-                            gravity.y = Math.max(-90, Math.min(event.beta, 90)) / 30;
+                            gravity.x = Math.max(-90, Math.min(event.beta, 90));
+                            gravity.y = Math.max(-90, Math.min(event.gamma, 90));
                         });
                     }
                 })
