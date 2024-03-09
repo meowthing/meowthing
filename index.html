@@ -97,7 +97,7 @@ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js
                             gravity = engine.gravity;
 
 
-                            gravity.x = Math.max(-90, Math.min(event.beta, 90)) / 20;
+                            gravity.x = Math.max(-90, Math.min(event.beta, 90)) / 20 * -1;
                             gravity.y = (Math.max(-90, Math.min(event.gamma, 90)) / 20) * -1;
                         });
                     }
